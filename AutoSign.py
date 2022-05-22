@@ -10,7 +10,6 @@ import os
 global currClass
 currClass=0
 
-
 def login(username,password):
     url='http://passport2.chaoxing.com/fanyalogin'
     headers={
@@ -105,7 +104,7 @@ def qiandao(url:str,address:str,sleepTime:int,SENDKEY:str):
             print(res.text)
             if '非签到活动' in res.text:
                 continue
-            push(SENDKEY,res,TGCHATID,BOTTOKEN)
+            # push(SENDKEY,res,TGCHATID,BOTTOKEN)
         print('\n')
             
 def push(SENDKEY,res,TGCHATID,BOTTOKEN):
@@ -145,21 +144,22 @@ def push(SENDKEY,res,TGCHATID,BOTTOKEN):
 
 
 if __name__=='__main__':
-    username=os.environ["USERNAME"]
-    password=os.environ["PASSWORD"]
-    
+    username='18684216042'
+    password='shhk010527..'
+     # username=os.environ["USERNAME"]
+    # password=os.environ["PASSWORD"]
     #server酱sendkey
-    SENDKEY=os.environ["SENDKEY"]
-
+    # SENDKEY=os.environ["SENDKEY"]
+    SENDKEY=''
     #Telegram推送参数
-    TGCHATID=os.environ["TGCHATID"]
-    BOTTOKEN=os.environ["BOTTOKEN"]
+    # TGCHATID=os.environ["TGCHATID"]
+    # BOTTOKEN=os.environ["BOTTOKEN"]
 
     #在下方可以更改签到地址和二维码的enc
-    address=os.environ["ADDRESS"]
+    # address=os.environ["ADDRESS"]
     #如果地址不是敏感信息，经常改动嫌麻烦可以不设置环境变量，address='你的地址'，即可
     #enc=''
-    
+    address=''
     #监测到签到活动后，延迟多久进行签到，1s=1000ms
     sleepTime=10
 
@@ -169,5 +169,5 @@ if __name__=='__main__':
     #print(course_dict)
     for currClass in course_dict:
         #print(course_dict[i][1])
-        qiandao(course_dict[currClass][1],address,sleepTime,SENDKEY)
-
+         qiandao(course_dict[currClass][1],address,sleepTime,SENDKEY)
+        
